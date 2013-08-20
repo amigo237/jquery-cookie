@@ -12,6 +12,18 @@ HEAD
 - Renamed bower package definition (component.json -> bower.json) for usage
   with up-to-date bower.
 
+- Added conversion functions as optional last argument for reading and writing,
+  so that values can be changed to a different representation easily on the fly.
+  Useful for parsing numbers or for JSON serialization and parsing. Examples:
+
+  ```javascript
+  $.cookie('foo', '42');
+  $.cookie('foo', Number); // => 42
+
+  $.cookie('foo', { bar: 'baz' }, JSON.stringify);
+  $.cookie('foo', JSON.parse); // => {bar: "baz"}
+  ```
+
 1.3.1
 -----
 - Fixed issue where it was no longer possible to check for an arbitrary cookie,
