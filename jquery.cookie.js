@@ -21,7 +21,14 @@
 		if (config.raw) {
 			return s;
 		}
-		return decodeURIComponent(s.replace(pluses, ' '));
+
+		try {
+			s = decodeURIComponent(s.replace(pluses, ' '));
+		}
+		catch(e){
+			s = unescape(s);
+		}
+		return s;
 	}
 
 	function decodeAndParse(s) {
